@@ -15,9 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use('/user', userRoutes);
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('API is Up and Running...');
+  res.sendFile(__dirname + "/public/landing.html");
 });
 
 mongoose.set('strictQuery', false);
